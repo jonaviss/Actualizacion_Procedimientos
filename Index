@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard DISI - Gestión Operativa</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+        }
+
+        h1, h2, h3, .font-brand {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .card-container {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 5px;
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .bg-igt-blue { background-color: #002d72; }
+        .text-igt-blue { color: #002d72; }
+        
+        .tab-active {
+            background-color: #002d72;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 45, 114, 0.2);
+        }
+    </style>
+</head>
+<body class="p-2 md:p-6">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useMemo, useEffect } = React;
+
+        // Datos oficiales de Procedimientos (DISI)
+        const rawData = [
+            { id: 'MTPS-DISI-001', nombre: 'Gestión de Solicitudes para el Desarrollo de Sistemas Informáticos', subproceso: 'DESARROLLO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Jonathan Visoni, Ramon Mairena, Erick Allara', formatos: ['DISI-FO-001', 'DISI-FO-016'] },
+            { id: 'MTPS-DISI-002', nombre: 'Control de Cambios y Actualización de Sistemas', subproceso: 'DESARROLLO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Jonathan Visoni, Ramon Mairena, Erick Allara', formatos: ['DISI-FO-002'] },
+            { id: 'MTPS-DISI-003', nombre: 'RECOPILACIÓN Y ANÁLISIS DE REQUERIMIENTOS', subproceso: 'DESARROLLO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Jonathan Visoni', formatos: ['DISI-FO-001', 'DISI-FO-003', 'DISI-FO-004'] },
+            { id: 'MTPS-DISI-004', nombre: 'PLANIFICACIÓN DE DESARROLLO DE SISTEMAS', subproceso: 'DESARROLLO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Jonathan Visoni', formatos: ['DISI-FO-003', 'DISI-FO-004'] },
+            { id: 'MTPS-DISI-006', nombre: 'CONTROL DE CALIDAD Y PRUEBAS QA', subproceso: 'DESARROLLO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Jonathan Visoni', formatos: ['DISI-FO-004', 'DISI-FO-005'] },
+            { id: 'MTPS-DISI-007', nombre: 'Puesta en producción', subproceso: 'DESARROLLO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Ramon Mairena', formatos: [] },
+            { id: 'MTPS-DISI-008', nombre: 'Acondicionamiento de equipos nuevos', subproceso: 'SOPORTE TÉCNICO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Brandon Miranda', formatos: ['DISI-FO-009'] },
+            { id: 'MTPS-DISI-009', nombre: 'Dictamen técnico para adquisición de equipo', subproceso: 'SOPORTE TÉCNICO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Brandon Miranda', formatos: ['DISI-FO-015'] },
+            { id: 'MTPS-DISI-010', nombre: 'Sustitución de equipo de computo', subproceso: 'SOPORTE TÉCNICO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Brandon Miranda', formatos: ['DISI-FO-013'] },
+            { id: 'MTPS-DISI-011', nombre: 'Emisión de Dictamen para Baja de equipo', subproceso: 'SOPORTE TÉCNICO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Brandon Miranda', formatos: ['DISI-FO-015'] },
+            { id: 'MTPS-DISI-012', nombre: 'Ingreso y egreso de equipo para reparación', subproceso: 'SOPORTE TÉCNICO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Brandon Miranda', formatos: ['DISI-FO-012'] },
+            { id: 'MTPS-DISI-013', nombre: 'Mantenimiento preventivo de equipo', subproceso: 'SOPORTE TÉCNICO', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Brandon Miranda', formatos: ['DISI-FO-014'] },
+            { id: 'MTPS-DISI-014', nombre: 'ADMINISTRACIÓN Y CONTROL DE DIRECCIONAMIENTO IP', subproceso: 'INFRAESTRUCTURA', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Erick Allara', formatos: [] },
+            { id: 'MTPS-DISI-015', nombre: 'GESTIÓN DE INFRAESTRUCTURA DE RED FÍSICA', subproceso: 'INFRAESTRUCTURA', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Erick Allara', formatos: [] },
+            { id: 'MTPS-DISI-016', nombre: 'IMPLEMENTACIÓN Y REUBICACIÓN DE RED', subproceso: 'INFRAESTRUCTURA', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Erick Allara', formatos: ['DISI-FO-006', 'DISI-FO-007', 'DISI-FO-016'] },
+            { id: 'MTPS-DISI-017', nombre: 'COPIA DE SEGURIDAD DE BASE DE DATOS', subproceso: 'INFRAESTRUCTURA', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Erick Allara', formatos: ['DISI-FO-008'] },
+            { id: 'MTPS-DISI-018', nombre: 'ALTA, BAJA Y MODIFICACIÓN DE USUARIOS', subproceso: 'INFRAESTRUCTURA', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Erick Allara', formatos: [] },
+            { id: 'MTPS-DISI-019', nombre: 'CONTROL DE PRIVILEGIOS DE NAVEGACIÓN', subproceso: 'INFRAESTRUCTURA', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Erick Allara', formatos: [] },
+            { id: 'MTPS-DISI-020', nombre: 'GESTIÓN DE LICENCIAMIENTO', subproceso: 'INFRAESTRUCTURA', estatus: 'EN REVISIÓN DE Planificación', avance: 90, responsable: 'Erick Allara', formatos: [] },
+        ];
+
+        // Datos oficiales de Formatos (FO)
+        const formatData = [
+            { id: 'DISI-FO-001', nombre: 'Solicitud de sistema de información', subproceso: 'DESARROLLO', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-002', nombre: 'Solicitud de actualización de sistema de información', subproceso: 'DESARROLLO', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-003', nombre: 'Análisis de Procesos para Generación de Requerimientos', subproceso: 'DESARROLLO', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-004', nombre: 'Ayuda de Memoria', subproceso: 'DESARROLLO', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-005', nombre: 'Formato aseguramiento de calidad (QA)', subproceso: 'DESARROLLO', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-006', nombre: 'FORMATO DE SOLICITUD PARA PUNTOS DE RED EN NUEVA UBICACIÓN', subproceso: 'INFRAESTRUCTURA', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-007', nombre: 'DICTAMEN DE FACTIBILIDAD PARA PUNTOS DE RED EN UNA NUEVA UBICACIÓN', subproceso: 'INFRAESTRUCTURA', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-008', nombre: 'FICHA COPIA DE BASE DE DATOS', subproceso: 'INFRAESTRUCTURA', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-009', nombre: 'Control interno de equipo de cómputo (Acondicionamiento)', subproceso: 'SOPORTE', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-012', nombre: 'Ingreso y egreso de equipo para reparación', subproceso: 'SOPORTE', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-013', nombre: 'Recepción de equipos para reparar', subproceso: 'SOPORTE', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-014', nombre: 'FORMULARIO DE MANTENIMIENTO PREVENTIVO DE EQUIPO', subproceso: 'SOPORTE', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-015', nombre: 'Opinión Técnica', subproceso: 'SOPORTE', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-016', nombre: 'Dictamen Técnico de Viabilidad Integral', subproceso: 'DESARROLLO', estatus: 'REVISADO Y FIRMADO' },
+            { id: 'DISI-FO-017', nombre: 'GESTIÓN DE USUARIOS', subproceso: 'INFRAESTRUCTURA', estatus: 'REVISADO Y FIRMADO' },
+        ];
+
+        const Icon = ({ name, className }) => {
+            useEffect(() => { if (window.lucide) window.lucide.createIcons(); }, [name]);
+            return <i data-lucide={name} className={className}></i>;
+        };
+
+        const App = () => {
+            const [view, setView] = useState('procedimientos');
+            const [search, setSearch] = useState('');
+
+            const filteredData = useMemo(() => {
+                const list = view === 'procedimientos' ? rawData : formatData;
+                return list.filter(i => i.nombre.toLowerCase().includes(search.toLowerCase()) || i.id.toLowerCase().includes(search.toLowerCase()));
+            }, [view, search]);
+
+            return (
+                <div className="max-w-[1280px] mx-auto bg-white min-h-screen shadow-2xl rounded-3xl overflow-hidden flex flex-col border border-slate-200">
+                    
+                    <div className="flex flex-col lg:flex-row flex-1 p-6 md:p-8 gap-8">
+                        
+                        {/* Panel Lateral (Avance) */}
+                        <aside className="w-full lg:w-72 shrink-0">
+                            <div className="p-6 rounded-2xl border-2 border-emerald-100 bg-emerald-50/30 flex flex-col items-center text-center sticky top-8">
+                                <h3 className="text-sm font-bold text-igt-blue uppercase tracking-widest mb-6 italic">ESTADO GLOBAL</h3>
+                                <div className="relative mb-4">
+                                    <svg width="120" height="120" viewBox="0 0 100 100" className="transform -rotate-90">
+                                        <circle cx="50" cy="50" r="40" stroke="#e2e8f0" strokeWidth="10" fill="none" />
+                                        <circle cx="50" cy="50" r="40" stroke="#16a34a" strokeWidth="10" fill="none" strokeDasharray="251.2" strokeDashoffset="25.12" strokeLinecap="round" />
+                                    </svg>
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <Icon name="file-check" className="w-10 h-10 text-emerald-600" />
+                                    </div>
+                                </div>
+                                <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Avance General</p>
+                                <span className="text-5xl font-black text-emerald-700">90%</span>
+                                <div className="w-full h-0.5 bg-slate-200 my-6"></div>
+                                <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest italic leading-relaxed uppercase">REVISIÓN ACTIVA</p>
+                            </div>
+                        </aside>
+
+                        {/* Área Principal */}
+                        <div className="flex-1 space-y-8 min-w-0">
+                            
+                            {/* Selector de Vista y Buscador */}
+                            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                                <div className="flex bg-slate-100 p-1.5 rounded-xl w-full sm:w-auto shadow-inner border border-slate-200">
+                                    <button 
+                                        onClick={() => setView('procedimientos')}
+                                        className={`flex-1 sm:px-6 py-2.5 rounded-lg text-[10px] font-black transition-all ${view === 'procedimientos' ? 'tab-active' : 'text-slate-500 hover:text-igt-blue'}`}
+                                    >
+                                        PROCEDIMIENTOS
+                                    </button>
+                                    <button 
+                                        onClick={() => setView('formatos')}
+                                        className={`flex-1 sm:px-6 py-2.5 rounded-lg text-[10px] font-black transition-all ${view === 'formatos' ? 'tab-active' : 'text-slate-500 hover:text-igt-blue'}`}
+                                    >
+                                        FORMATOS
+                                    </button>
+                                </div>
+                                <div className="relative w-full sm:w-80">
+                                    <Icon name="search" className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300" />
+                                    <input 
+                                        type="text" 
+                                        placeholder={`Buscar ${view}...`}
+                                        className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-[11px] font-bold focus:outline-none focus:ring-2 focus:ring-igt-blue transition-all shadow-sm"
+                                        value={search}
+                                        onChange={e => setSearch(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Título Dinámico */}
+                            <div className="flex items-center gap-3 text-igt-blue">
+                                <div className="w-10 h-10 bg-igt-blue rounded-xl flex items-center justify-center shadow-lg">
+                                    <Icon name={view === 'procedimientos' ? "list-checks" : "copy"} className="w-6 h-6 text-white" />
+                                </div>
+                                <h3 className="text-lg font-black uppercase tracking-tight">
+                                    {view === 'procedimientos' ? 'Matriz de Procedimientos DISI' : 'Catálogo de Formatos FO'}
+                                </h3>
+                            </div>
+
+                            {/* Tabla de Datos */}
+                            <div className="card-container overflow-hidden border border-slate-100">
+                                <div className="overflow-x-auto custom-scrollbar">
+                                    <table className="w-full text-left min-w-[900px]">
+                                        <thead>
+                                            <tr className="bg-igt-blue text-white text-[10px] font-black uppercase tracking-widest">
+                                                <th className="py-4 px-6 border-r border-white/10">ID / CÓDIGO</th>
+                                                <th className="py-4 px-6">{view === 'procedimientos' ? 'DESCRIPCIÓN OPERATIVA' : 'NOMBRE DEL FORMATO'}</th>
+                                                <th className="py-4 px-6 text-center">SUBPROCESO</th>
+                                                <th className="py-4 px-6">ESTATUS</th>
+                                                {view === 'procedimientos' && (
+                                                    <React.Fragment>
+                                                        <th className="py-4 px-6">FORMATOS ASOCIADOS</th>
+                                                        <th className="py-4 px-6 text-right">AVANCE</th>
+                                                    </React.Fragment>
+                                                )}
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-slate-100">
+                                            {filteredData.map((item, idx) => (
+                                                <tr key={idx} className="hover:bg-slate-50 transition-colors group">
+                                                    <td className="py-5 px-6 whitespace-nowrap">
+                                                        <span className="text-[10px] font-black text-igt-blue bg-blue-50 px-2 py-1 rounded border border-blue-100 uppercase">
+                                                            {item.id}
+                                                        </span>
+                                                    </td>
+                                                    <td className="py-5 px-6">
+                                                        <p className="text-[11px] font-bold text-slate-700 leading-snug uppercase max-w-sm group-hover:text-igt-blue transition-colors">
+                                                            {item.nombre}
+                                                        </p>
+                                                        {view === 'procedimientos' && (
+                                                            <div className="mt-1 flex items-center gap-1.5 text-[8px] font-bold text-slate-400 uppercase italic">
+                                                                <Icon name="user-check" className="w-2.5 h-2.5" />
+                                                                {item.responsable.split(',')[0]}
+                                                            </div>
+                                                        )}
+                                                    </td>
+                                                    <td className="py-5 px-6 text-center">
+                                                        <span className={`text-[9px] font-black px-2.5 py-1 rounded-full border uppercase ${
+                                                            item.subproceso === 'DESARROLLO' ? 'bg-blue-50 text-blue-700 border-blue-100' :
+                                                            item.subproceso.includes('SOPORTE') ? 'bg-slate-50 text-slate-600 border-slate-200' :
+                                                            'bg-sky-50 text-sky-700 border-sky-100'
+                                                        }`}>
+                                                            {item.subproceso.split(' ')[0]}
+                                                        </span>
+                                                    </td>
+                                                    <td className="py-5 px-6">
+                                                        <div className="flex items-start gap-2">
+                                                            <div className={`mt-1 w-2 h-2 rounded-full shrink-0 shadow-[0_0_8px_rgba(16,185,129,0.4)] ${view === 'formatos' ? 'bg-amber-500 shadow-amber-200' : 'bg-emerald-500 animate-pulse'}`}></div>
+                                                            <span className="text-[9px] font-bold text-slate-500 uppercase leading-snug">
+                                                                {item.estatus}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    {view === 'procedimientos' && (
+                                                        <React.Fragment>
+                                                            <td className="py-5 px-6">
+                                                                <div className="flex flex-wrap gap-1.5 max-w-[200px]">
+                                                                    {item.formatos && item.formatos.length > 0 ? item.formatos.map(f => (
+                                                                        <span key={f} className="bg-white text-[8px] font-black text-igt-blue px-2 py-0.5 rounded border border-igt-blue/20 uppercase whitespace-nowrap shadow-sm">
+                                                                            {f}
+                                                                        </span>
+                                                                    )) : <span className="text-slate-300 italic text-[9px]">-</span>}
+                                                                </div>
+                                                            </td>
+                                                            <td className="py-5 px-6 text-right">
+                                                                <span className="text-[11px] font-black px-3 py-1.5 rounded-lg border shadow-sm text-emerald-700 bg-emerald-50 border-emerald-100">
+                                                                    {item.avance}%
+                                                                </span>
+                                                            </td>
+                                                        </React.Fragment>
+                                                    )}
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
