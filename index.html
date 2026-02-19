@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruta de Trabajo Institucional - MTPS-DISI-002</title>
+    <title>Ruta de Trabajo Institucional - DISI</title>
     <!-- Tailwind CSS para el diseño -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- React y ReactDOM para la interactividad -->
@@ -16,16 +16,16 @@
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-slate-50 text-slate-900 text-left">
     <div id="root"></div>
 
     <script type="text/babel">
         const { useState } = React;
 
-        // Iconos SVG integrados para máxima estabilidad
+        // Iconos SVG integrados para máxima estabilidad institucional
         const Icons = {
-            File: () => (
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            FilePlus: () => (
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
             ),
             Search: () => (
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -41,25 +41,45 @@
             ),
             Shield: () => (
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            ),
+            EditFile: () => (
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            ),
+            User: () => (
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            ),
+            Info: () => (
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            ),
+            CheckCircle: () => (
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            ),
+            Settings: () => (
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
             )
         };
 
         const App = () => {
-            const [tab, setTab] = useState('ruta'); // 'ruta' o 'normas'
+            const [tab, setTab] = useState('ruta');
             const [activeStep, setActiveStep] = useState(0);
 
             const steps = [
                 {
-                    id: "Solicitar Actualización",
-                    title: "DISI-FO-002: Solicitud de actualización de sistema de información",
+                    id: "Solicitud de nuevo sistema o actualización de sistema",
+                    title: "Formalización del Requerimiento Institucional",
                     actor: "Ente Rector",
-                    icon: <Icons.File />,
+                    icon: <Icons.FilePlus />,
                     color: "bg-blue-600",
-                    desc: "El Ente Rector formaliza el requerimiento mediante el formato oficial institucional. Es obligatorio haber completado la Línea Base Técnica previo a este paso.",
+                    desc: "El Ente Rector formaliza el requerimiento mediante el formato institucional oficial tras haber completado satisfactoriamente la Línea Base Técnica. Descargue el archivo editable (Word) según su necesidad operativa:",
                     tasks: [
-                        "Llenado técnico del DISI-FO-002: Solicitud de actualización de sistema de información",
-                        "Justificación de objetivos operativos y beneficios esperados",
-                        "Obtención de avales de Jefatura y Dirección, autorizados por el Despacho Ministerial"
+                        { 
+                            label: "DISI-FO-001: Solicitud de nuevo sistema informático (Para plataformas inexistentes)", 
+                            file: "https://mintrabajogt.sharepoint.com/:w:/s/direcciondesistemasdeinformacion/IQDDoyf33n6LTYkGhhsz-8C3AZLSEL5jU1_Pm7x9CJUiESw?e=g2CmWZ" 
+                        },
+                        { 
+                            label: "DISI-FO-002: Solicitud de actualización de sistema de información (Para mejoras en sistemas vigentes)", 
+                            file: "https://mintrabajogt.sharepoint.com/:w:/s/direcciondesistemasdeinformacion/IQBmsWQgHmdKRrG3zfquyOVVAUlSaWwV8X60XZH8y-7bQJ0?e=RxF0hh" 
+                        }
                     ]
                 },
                 {
@@ -68,57 +88,99 @@
                     actor: "Dirección de Sistemas de Información",
                     icon: <Icons.Search />,
                     color: "bg-emerald-600",
-                    desc: "La Dirección de Sistemas de Información evalúa la factibilidad técnica del cambio. Se analizan recursos, infraestructura y alineación estratégica.",
+                    desc: "La Dirección de Sistemas de Información recepciona y evalúa la factibilidad técnica y operativa para dictaminar la prioridad de ejecución institucional a través de las siguientes evaluaciones específicas:",
                     tasks: [
-                        "Recepción y validación de expediente con DISI-FO-002: Solicitud de actualización de sistema de información y Línea Base Técnica",
-                        "Dictámenes internos de Infraestructura, Desarrollo y Gestión de Proyectos",
-                        "Emisión del DISI-FO-016: Dictamen Técnico de Viabilidad Integral"
+                        {
+                            label: "Evaluación de Impacto en Infraestructura (Hardware y Redes)",
+                            resp: "Encargado de Infraestructura",
+                            desc: "Análisis de la capacidad actual de los servidores, almacenamiento, redes y seguridad para soportar la carga del sistema solicitado.",
+                            example: "Verificación de la capacidad instalada en el centro de datos institucional para asegurar la estabilidad técnica del nuevo requerimiento."
+                        },
+                        {
+                            label: "Evaluación de Arquitectura de Software y Desarrollo",
+                            resp: "Jefe de Desarrollo",
+                            desc: "Evaluación del lenguaje de programación, estructuras de bases de datos y compatibilidad con el ecosistema digital del Ministerio.",
+                            example: "Validación de estándares de codificación y seguridad lógica para garantizar la integración técnica con los sistemas transversales."
+                        },
+                        {
+                            label: "Análisis de Factibilidad de Proyectos y Capacidad Instalada",
+                            resp: "Encargado de Proyectos",
+                            desc: "Análisis técnico de la viabilidad del proyecto considerando la capacidad instalada de la Dirección (personal y tiempo), perfiles técnicos requeridos y su alineación con los objetivos estratégicos institucionales.",
+                            example: "Determinación de la disponibilidad de perfiles técnicos (analistas, desarrolladores, QA) y validación de que el proyecto se ajusta a las prioridades del Despacho Ministerial."
+                        },
+                        {
+                            label: "Emisión de Resolución Final en el DISI-FO-016: Dictamen Técnico de Viabilidad Integral",
+                            resp: "Director de Sistemas de Información",
+                            desc: "Consolidación de todas las evaluaciones técnicas y estratégicas en un documento oficial único que autoriza o rechaza técnicamente la ejecución del proyecto.",
+                            example: "Firma y validación del dictamen oficial que determina la factibilidad integral del requerimiento basado en criterios técnicos, humanos y estratégicos."
+                        }
                     ]
                 },
                 {
-                    id: "Desarrollo y Actualización",
-                    title: "Fase de Ejecución y Programación del Sistema",
+                    id: "Desarrollo y Ejecución",
+                    title: "Ciclo de Vida de Desarrollo de Software",
                     actor: "Dirección de Sistemas de Información",
                     icon: <Icons.Code />,
                     color: "bg-indigo-600",
-                    desc: "Implementación técnica de los requerimientos. Esta fase solo se activa con un dictamen favorable contenido en el DISI-FO-016: Dictamen Técnico de Viabilidad Integral.",
+                    desc: "Implementación técnica de los requerimientos aprobados. Esta fase se ejecuta únicamente si el dictamen DISI-FO-016: Dictamen Técnico de Viabilidad Integral es positivo e incluye las siguientes etapas operativas:",
                     tasks: [
-                        "Programación de los requerimientos técnicos aprobados",
-                        "Pruebas de calidad y aceptación con el Ente Rector (UAT)",
-                        "Actualización de manuales por el Ente Rector y salida a producción"
+                        { 
+                            label: "Recopilación de Requerimientos", 
+                            resp: "Dirección de Sistemas de Información",
+                            desc: "Fase de levantamiento donde se identifican las necesidades del negocio, las reglas legales y los objetivos que debe cumplir el software."
+                        },
+                        { 
+                            label: "Análisis y Diseño", 
+                            resp: "Dirección de Sistemas de Información",
+                            desc: "Fase de arquitectura donde se definen los procesos técnicos, el modelado de datos y el diseño visual de las interfaces de usuario."
+                        },
+                        { 
+                            label: "Desarrollo", 
+                            resp: "Dirección de Sistemas de Información",
+                            desc: "Fase de construcción técnica donde los ingenieros codifican las funcionalidades según los requerimientos y el diseño técnico aprobado."
+                        },
+                        { 
+                            label: "Pruebas de Aceptación (QA)", 
+                            resp: "Ente Rector",
+                            desc: "Fase de validación funcional donde el Ente Rector certifica que el software cumple fielmente con los procesos operativos definidos."
+                        },
+                        { 
+                            label: "Capacitación", 
+                            resp: "Ente Rector",
+                            desc: "Fase de transferencia de conocimiento hacia los usuarios finales para asegurar el uso correcto y eficiente de la herramienta institucional."
+                        },
+                        { 
+                            label: "Implementación", 
+                            resp: "Dirección de Sistemas de Información",
+                            desc: "Fase de despliegue oficial y puesta en marcha del sistema en el entorno de producción para el servicio ministerial."
+                        }
                     ]
                 }
             ];
 
             const normas = [
                 {
-                    titulo: "1. Sobre la solicitud",
+                    titulo: "1. SOBRE LA SOLICITUD",
                     items: [
-                        "Toda solicitud debe contar con aval de jefe de unidad, director o autoridad superior y despacho ministerial.",
-                        "Debe documentarse únicamente en el formulario DISI-FO-002: Solicitud de actualización de sistema de información.",
-                        "NORMA 1.C: Debe ir acompañada de los procedimientos formalmente aprobados que sustenten los requerimientos funcionales técnicos."
+                        "Toda solicitud debe contar con aval de autoridad superior y despacho ministerial antes de su remisión.",
+                        "Debe documentarse en el DISI-FO-001 o DISI-FO-002 según corresponda.",
+                        "REQUISITO OBLIGATORIO: Se deben adjuntar procedimientos formalmente aprobados (Línea Base)."
                     ]
                 },
                 {
-                    titulo: "2. Priorización y Planificación",
+                    titulo: "2. PRIORIZACIÓN Y EVALUACIÓN TÉCNICA",
                     items: [
                         "Las solicitudes serán evaluadas mediante el DISI-FO-016: Dictamen Técnico de Viabilidad Integral conforme a disponibilidad de recursos.",
-                        "La Dirección de Sistemas de Información se reserva el derecho de calendarizar según su planificación operativa."
+                        "Se consideran criterios de viabilidad técnica, capacidad instalada y alineación institucional.",
+                        "La Dirección de Sistemas de Información calendariza según su planificación operativa."
                     ]
                 },
                 {
-                    titulo: "3. Documentación Obligatoria",
+                    titulo: "3. RESPONSABILIDADES DEL ENTE RECTOR",
                     items: [
-                        "Toda actualización requiere manual de usuario elaborado íntegramente por el Ente Rector.",
-                        "La gestión de usuarios es responsabilidad única y exclusivamente del Ente Rector solicitante.",
-                        "El Ente Rector debe mantener actualizados los diagramas, módulos y roles de su plataforma operativa actual."
-                    ]
-                },
-                {
-                    titulo: "4. Capacitación y Soporte",
-                    items: [
-                        "La Dirección de Sistemas de Información ofrece capacitación básica sobre los cambios realizados a usuarios clave.",
-                        "El Ente Rector es responsable de replicar la capacitación a la totalidad de sus usuarios finales."
+                        "Elaboración íntegra de manuales de usuario y guías operativas.",
+                        "Réplica de capacitaciones técnicas a la totalidad de su personal.",
+                        "Mantenimiento de la documentación de sus procesos de negocio actualizada."
                     ]
                 }
             ];
@@ -126,74 +188,95 @@
             return (
                 <div className="min-h-screen pb-12">
                     {/* Header Institucional */}
-                    <header className="bg-[#002d57] text-white rounded-b-[2.5rem] p-6 md:p-10 mb-8 shadow-lg border-b-4 border-blue-500">
-                        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-                            <div className="text-center md:text-left">
-                                <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-none mb-2">Dirección de Sistemas de Información</h1>
-                                <p className="text-blue-300 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">Manual de Procedimientos MTPS-DISI-002 | Versión 04</p>
+                    <header className="bg-[#002d57] text-white rounded-b-[2.5rem] p-6 md:p-10 mb-8 shadow-lg border-b-4 border-blue-500 text-left">
+                        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-left">
+                            <div className="flex-1 text-left">
+                                <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-none mb-4 tracking-tighter">Dirección de Sistemas de Información</h1>
+                                <div className="space-y-2 text-left">
+                                    <p className="text-blue-300 text-[9px] md:text-[11px] font-black uppercase tracking-[0.1em] border-l-2 border-blue-500 pl-3 leading-tight text-left">
+                                        Procedimiento Asociado: <span className="text-white font-bold uppercase tracking-normal">MTPS-DISI-001 - SOLICITUD DE NUEVO SISTEMA INFORMÁTICO</span>
+                                    </p>
+                                    <p className="text-blue-300 text-[9px] md:text-[11px] font-black uppercase tracking-[0.1em] border-l-2 border-blue-500 pl-3 leading-tight text-left">
+                                        Procedimiento Asociado: <span className="text-white font-bold uppercase tracking-normal">MTPS-DISI-002 - Control de Cambios y Actualización de Sistemas Informáticos</span>
+                                    </p>
+                                </div>
                             </div>
                             <div className="flex bg-white/10 p-1 rounded-2xl shrink-0 border border-white/20">
-                                <button 
-                                    onClick={() => setTab('ruta')}
-                                    className={`px-6 py-2 rounded-xl text-[10px] md:text-xs font-black uppercase transition-all ${tab === 'ruta' ? 'bg-white text-blue-900 shadow-xl' : 'text-blue-200 hover:text-white'}`}
-                                >
-                                    Ruta Operativa
-                                </button>
-                                <button 
-                                    onClick={() => setTab('normas')}
-                                    className={`px-6 py-2 rounded-xl text-[10px] md:text-xs font-black uppercase transition-all ${tab === 'normas' ? 'bg-white text-blue-900 shadow-xl' : 'text-blue-200 hover:text-white'}`}
-                                >
-                                    Normas
-                                </button>
+                                <button onClick={() => setTab('ruta')} className={`px-6 py-2 rounded-xl text-[10px] md:text-xs font-black uppercase transition-all ${tab === 'ruta' ? 'bg-white text-blue-900 shadow-xl' : 'text-blue-200 hover:text-white'}`}>Ruta Operativa</button>
+                                <button onClick={() => setTab('normas')} className={`px-6 py-2 rounded-xl text-[10px] md:text-xs font-black uppercase transition-all ${tab === 'normas' ? 'bg-white text-blue-900 shadow-xl' : 'text-blue-200 hover:text-white'}`}>Normas</button>
                             </div>
                         </div>
                     </header>
 
-                    <main className="max-w-5xl mx-auto px-4">
+                    <main className="max-w-6xl mx-auto px-4 text-left">
                         {tab === 'ruta' ? (
                             <div className="space-y-8">
-                                {/* Requisito Previo de Línea Base */}
-                                <div className="bg-white rounded-[2.5rem] border-2 border-blue-600 shadow-xl overflow-hidden transition-all hover:shadow-2xl">
-                                    <div className="bg-blue-600 p-6 text-white flex items-center gap-4">
+                                {/* Requisito Obligatorio Segmentado */}
+                                <div className="bg-white rounded-[2.5rem] border-2 border-blue-600 shadow-xl overflow-hidden mb-10 transition-all hover:shadow-2xl">
+                                    <div className="bg-blue-600 p-6 text-white flex items-center gap-4 text-left">
                                         <div className="bg-white/20 p-3 rounded-2xl shrink-0"><Icons.Book /></div>
-                                        <h2 className="text-xl font-black uppercase tracking-tight">Requisito Obligatorio: Línea Base Técnica</h2>
+                                        <h2 className="text-xl font-black uppercase tracking-tight text-left uppercase font-black">Requisito Obligatorio: Línea Base Técnica</h2>
                                     </div>
-                                    <div className="p-8">
-                                        <p className="text-gray-700 font-medium mb-8 leading-relaxed text-sm md:text-base border-l-4 border-blue-100 pl-4">
-                                            Antes de proceder con cualquier trámite técnico, el <strong>Ente Rector</strong> debe entregar el respaldo documental íntegro de su plataforma actual:
+                                    <div className="p-8 text-left">
+                                        <p className="text-gray-700 font-medium mb-8 leading-relaxed text-sm md:text-base border-l-4 border-blue-100 pl-4 text-left font-medium">
+                                            Para cualquier gestión técnica, el <strong>Ente Rector</strong> debe entregar obligatoriamente la documentación de sus procesos operativos previo al inicio del trámite, segmentada según el caso:
                                         </p>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                                            {[
-                                                "Diagramas de flujo actuales", 
-                                                "Procedimientos aprobados", 
-                                                "Manual de usuario vigente", 
-                                                "Módulos y roles actuales"
-                                            ].map((item, i) => (
-                                                <div key={i} className="flex items-center gap-3 p-4 bg-blue-50 rounded-2xl border border-blue-100 transition-transform hover:-translate-y-1">
-                                                    <div className="w-2 h-2 rounded-full bg-blue-600 shrink-0 shadow-[0_0_8px_rgba(37,99,235,0.5)]"></div>
-                                                    <span className="text-[10px] font-black text-blue-900 leading-tight uppercase tracking-tighter">{item}</span>
-                                                </div>
-                                            ))}
+
+                                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                            {/* Caso Actualización */}
+                                            <div className="bg-slate-50 p-6 rounded-[2rem] border border-slate-200 shadow-inner">
+                                                <h3 className="text-blue-700 font-black uppercase text-[11px] tracking-widest mb-5 flex items-center gap-2 border-b border-blue-100 pb-2">
+                                                    <Icons.Settings /> si la solicitud es para actualizacion
+                                                </h3>
+                                                <ul className="space-y-4">
+                                                    {[
+                                                        "Manual de usuario vigente y aprobado.",
+                                                        "Procedimientos aprobados relacionados a lo que el sistema realiza actualmente (de manera descriptiva y con diagramas de flujo).",
+                                                        "Conocer los roles que el sistema tiene y que hace cada rol.",
+                                                        "Normativa legal vigente."
+                                                    ].map((item, i) => (
+                                                        <li key={i} className="flex gap-3 text-xs font-bold text-slate-700 leading-tight">
+                                                            <div className="mt-0.5"><Icons.CheckCircle className="text-blue-500 shrink-0" /></div>
+                                                            <span>{item}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+
+                                            {/* Caso Nuevo Sistema */}
+                                            <div className="bg-blue-50/50 p-6 rounded-[2rem] border border-blue-100 shadow-inner">
+                                                <h3 className="text-blue-900 font-black uppercase text-[11px] tracking-widest mb-5 flex items-center gap-2 border-b border-blue-200 pb-2">
+                                                    <Icons.FilePlus /> si la solicitud es para nuevo sistema
+                                                </h3>
+                                                <ul className="space-y-4">
+                                                    {[
+                                                        "Procedimientos aprobados que quiere sistematizar (de manera descriptiva y con diagramas de flujo).",
+                                                        "Normativa legal vigente."
+                                                    ].map((item, i) => (
+                                                        <li key={i} className="flex gap-3 text-xs font-bold text-blue-900 leading-tight">
+                                                            <div className="mt-0.5"><Icons.CheckCircle className="text-blue-600 shrink-0" /></div>
+                                                            <span>{item}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Navegación por Pasos Clarificados */}
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {/* Navegación por Pasos */}
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
                                     {steps.map((step, idx) => (
                                         <button 
                                             key={idx}
                                             onClick={() => setActiveStep(idx)}
-                                            className={`p-6 rounded-[2rem] border-2 transition-all text-left flex flex-col gap-4 group ${activeStep === idx ? 'bg-white border-blue-600 shadow-2xl scale-[1.03] z-10' : 'bg-white/60 border-transparent text-slate-400 hover:border-slate-200 hover:bg-white'}`}
+                                            className={`p-6 rounded-[2rem] border-2 transition-all text-left flex flex-col gap-4 group ${activeStep === idx ? 'bg-white border-blue-600 shadow-2xl scale-[1.03] z-10 text-left' : 'bg-white/60 border-transparent text-slate-400 hover:border-slate-200 hover:bg-white text-left'}`}
                                         >
-                                            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${activeStep === idx ? step.color + ' text-white shadow-lg' : 'bg-slate-100 text-slate-300'}`}>
-                                                {step.icon}
-                                            </div>
-                                            <div>
-                                                <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-60 mb-1">{step.id}</p>
-                                                <h3 className={`text-xs font-black uppercase leading-tight ${activeStep === idx ? 'text-slate-900' : 'text-slate-400'}`}>
-                                                    Responsable: {step.actor === "Dirección de Sistemas de Información" ? "Dirección Sistemas" : step.actor}
-                                                </h3>
+                                            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${activeStep === idx ? step.color + ' text-white shadow-lg' : 'bg-slate-100 text-slate-300'}`}>{step.icon}</div>
+                                            <div className="text-left font-black text-slate-800">
+                                                <p className="text-[9px] font-black uppercase tracking-[0.2em] opacity-60 mb-1 text-left">PASO 0{idx + 1}</p>
+                                                <h3 className={`text-[10px] font-black uppercase leading-tight mb-2 text-left ${activeStep === idx ? 'text-slate-900' : 'text-slate-400'}`}>{step.id}</h3>
+                                                <p className={`text-[9px] font-black uppercase tracking-wider text-left ${activeStep === idx ? 'text-blue-600' : 'text-slate-300'}`}>Responsable: {step.actor === "Dirección de Sistemas de Información" ? "DISI" : step.actor}</p>
                                             </div>
                                         </button>
                                     ))}
@@ -202,83 +285,122 @@
                                 {/* Detalle del Paso Activo */}
                                 <div className="bg-white rounded-[3rem] shadow-2xl border border-gray-100 overflow-hidden transition-all duration-700">
                                     <div className={`${steps[activeStep].color} p-10 text-white relative overflow-hidden`}>
-                                        <div className="absolute top-0 right-0 p-6 opacity-10 scale-[2] pointer-events-none">
-                                            {steps[activeStep].icon}
-                                        </div>
-                                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-                                            <div>
-                                                <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-80 mb-3 border-b border-white/20 w-fit pb-1">Responsable: {steps[activeStep].actor}</p>
-                                                <h2 className="text-3xl md:text-4xl font-black tracking-tighter leading-none uppercase mb-4">
-                                                    {steps[activeStep].id}
-                                                </h2>
-                                                <div className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest w-fit border border-white/10">
-                                                    {steps[activeStep].title}
-                                                </div>
-                                            </div>
+                                        <div className="absolute top-0 right-0 p-6 opacity-10 scale-[2] pointer-events-none">{steps[activeStep].icon}</div>
+                                        <div className="relative z-10 text-left text-white text-left text-white">
+                                            <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-80 mb-3 border-b border-white/20 w-fit pb-1 font-bold tracking-widest uppercase text-left text-white">Responsable: {steps[activeStep].actor}</p>
+                                            <h2 className="text-2xl md:text-4xl font-black tracking-tighter leading-none uppercase mb-4 text-left tracking-tight text-white uppercase text-left text-white">PASO 0{activeStep + 1}: {steps[activeStep].id}</h2>
+                                            <div className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest w-fit border border-white/10 shadow-sm text-white text-left uppercase text-white uppercase">Procedimiento Oficial</div>
                                         </div>
                                     </div>
-                                    <div className="p-8 md:p-14">
-                                        <p className="text-slate-600 text-lg md:text-xl leading-relaxed mb-10 font-medium italic border-l-4 border-slate-100 pl-6">
-                                            {steps[activeStep].desc}
-                                        </p>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="p-8 md:p-14 text-left">
+                                        <p className="text-slate-600 text-lg md:text-xl leading-relaxed mb-10 font-medium italic border-l-4 border-slate-100 pl-6 text-left">{steps[activeStep].desc}</p>
+                                        
+                                        <div className="grid grid-cols-1 gap-4 text-left">
                                             {steps[activeStep].tasks.map((task, i) => (
-                                                <div key={i} className="flex items-start gap-5 p-6 bg-slate-50 rounded-[2rem] border border-slate-100 transition-all hover:border-blue-300 hover:bg-white hover:shadow-lg group">
-                                                    <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-sm font-black text-slate-300 border border-slate-100 shrink-0 group-hover:text-blue-600 group-hover:border-blue-200 shadow-sm transition-all">{i+1}</div>
-                                                    <span className="text-sm font-bold text-slate-700 leading-snug pt-2 group-hover:text-slate-900 transition-colors">{task}</span>
-                                                </div>
+                                                (activeStep === 1 || activeStep === 2) ? (
+                                                    /* Desglose estructurado para Pasos 02 y 03 */
+                                                    <div key={i} className="flex flex-col p-6 bg-white border border-slate-200 rounded-[2.5rem] hover:border-blue-300 transition-all shadow-sm text-left">
+                                                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3 text-left">
+                                                            <div className="flex items-center gap-4 text-left text-slate-800 text-left">
+                                                                <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-black shadow-inner text-left">
+                                                                    {i + 1}
+                                                                </div>
+                                                                <span className="text-sm font-black text-slate-800 uppercase tracking-tight text-left text-left">
+                                                                    {typeof task === 'string' ? task : task.label}
+                                                                </span>
+                                                            </div>
+                                                            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-xl border border-slate-100 shrink-0 shadow-sm text-left">
+                                                                <Icons.User />
+                                                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 text-left">
+                                                                    Responsable: <span className="text-blue-700 font-black text-left">{typeof task === 'string' ? "Dirección Sistemas" : task.resp}</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        {typeof task === 'object' && task.desc && (
+                                                            <div className="space-y-4 border-t border-slate-100 pt-4 text-left text-left">
+                                                                <div className="flex items-start gap-3 text-left text-left">
+                                                                    <div className="mt-1 text-blue-500 shrink-0 text-left text-left text-left"><Icons.Info /></div>
+                                                                    <p className="text-sm text-slate-600 leading-relaxed font-medium text-left text-left">
+                                                                        <span className="font-black text-slate-800 uppercase text-[10px] tracking-widest block mb-1 text-left text-left">Objetivo de la Fase:</span>
+                                                                        {task.desc}
+                                                                    </p>
+                                                                </div>
+                                                                
+                                                                {task.example && (
+                                                                    <div className="bg-blue-50/40 p-4 rounded-2xl border border-blue-100/50 ml-7 text-left text-left">
+                                                                        <p className="text-sm text-blue-800 leading-relaxed italic text-left text-left">
+                                                                            <span className="font-black text-blue-900 uppercase text-[9px] tracking-widest block mb-1 not-italic flex items-center gap-1 text-left text-left">
+                                                                                <Icons.CheckCircle /> {activeStep === 1 ? "Análisis de Factibilidad:" : "Descripción de la Fase:"}
+                                                                            </span>
+                                                                            "{task.example}"
+                                                                        </p>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                ) : (
+                                                    /* Renderizado estándar para Paso 01 */
+                                                    <div key={i} className="flex items-start gap-5 p-6 bg-slate-50 rounded-[2.5rem] border border-slate-100 transition-all hover:border-blue-300 hover:bg-white hover:shadow-lg group text-left text-slate-700 text-left text-left">
+                                                        <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-sm font-black text-slate-300 border border-slate-100 shrink-0 group-hover:text-blue-600 group-hover:border-blue-200 shadow-sm transition-all text-left font-black text-left">{i+1}</div>
+                                                        <div className="flex flex-col gap-3 w-full pt-2 text-left text-left text-left text-left text-left text-left">
+                                                            <span className="text-sm font-bold text-slate-700 leading-snug group-hover:text-slate-900 transition-colors text-left text-left font-black text-left text-left">
+                                                                {typeof task === 'string' ? task : task.label}
+                                                            </span>
+                                                            {activeStep === 0 && typeof task !== 'string' && (
+                                                                <button 
+                                                                    onClick={() => window.open(task.file, '_blank')}
+                                                                    className="flex items-center justify-center gap-2 bg-[#1a5fb4] hover:bg-blue-800 text-white px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all shadow-md active:scale-95 w-fit text-left text-left"
+                                                                >
+                                                                    <Icons.EditFile /> Descargar Editable (Word)
+                                                                </button>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                )
                                             ))}
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Alerta de Cierre */}
-                                <div className="bg-amber-50 border-2 border-amber-200 rounded-[2.5rem] p-8 flex flex-col md:flex-row gap-6 shadow-md items-center text-center md:text-left">
-                                    <div className="text-amber-500 shrink-0 scale-125"><Icons.Alert /></div>
-                                    <div className="text-amber-900 text-xs md:text-sm font-black leading-relaxed uppercase tracking-tight max-w-3xl">
-                                        <p>La <strong>Dirección de Sistemas de Información</strong> no recepcionará el <strong>DISI-FO-002: Solicitud de actualización de sistema de información</strong> ni emitirá el <strong>DISI-FO-016: Dictamen Técnico de Viabilidad Integral</strong> si el <strong>Ente Rector</strong> no adjunta la documentación de la Línea Base Técnica requerida.</p>
+                                <div className="bg-amber-50 border-2 border-amber-200 rounded-[2.5rem] p-8 flex flex-col md:flex-row gap-6 shadow-md items-center text-left text-left text-left">
+                                    <div className="text-amber-500 shrink-0 scale-125 text-left text-left text-left"><Icons.Alert /></div>
+                                    <div className="text-amber-900 text-xs md:text-[13px] font-black leading-relaxed uppercase tracking-tight max-w-5xl text-left font-black text-left text-left">
+                                        <p>La <strong>Dirección de Sistemas de Información</strong> no procesará solicitudes (<strong>DISI-FO-001</strong> o <strong>DISI-FO-002</strong>) ni emitirá el <strong>DISI-FO-016: Dictamen Técnico de Viabilidad Integral</strong> si el <strong>Ente Rector</strong> no adjunta la documentación de la Línea Base Técnica requerida.</p>
                                     </div>
                                 </div>
                             </div>
                         ) : (
-                            <div className="space-y-8 animate-in fade-in duration-500">
-                                <div className="flex items-center gap-4 px-4">
-                                    <div className="bg-blue-900 text-white p-3 rounded-2xl shadow-lg"><Icons.Shield /></div>
-                                    <h2 className="text-2xl font-black text-slate-800 uppercase tracking-tighter">Normativa Técnica del Procedimiento</h2>
+                            <div className="space-y-8 animate-in fade-in duration-500 text-left text-left text-left">
+                                <div className="flex items-center gap-4 px-4 text-left text-slate-800 font-black text-left text-left text-left text-left">
+                                    <div className="bg-blue-900 text-white p-3 rounded-2xl shadow-lg text-left text-left text-left text-left"><Icons.Shield /></div>
+                                    <h2 className="text-2xl font-black text-slate-800 uppercase tracking-tighter text-left uppercase font-black text-left text-left text-left">Normativa Técnica Consolidada</h2>
                                 </div>
-                                <div className="grid grid-cols-1 gap-6">
+                                <div className="grid grid-cols-1 gap-6 text-left text-left text-left text-left">
                                     {normas.map((norma, idx) => (
-                                        <div key={idx} className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-200 shadow-sm transition-all hover:border-blue-200 hover:shadow-xl group">
-                                            <h3 className="font-black text-blue-900 text-xs uppercase mb-8 pb-3 border-b border-slate-100 tracking-[0.3em] flex items-center justify-between">
-                                                {norma.titulo}
-                                                <span className="text-[10px] text-slate-300 font-normal">MTPS-DISI-002</span>
-                                            </h3>
-                                            <div className="space-y-6">
-                                                {norma.items.map((item, i) => (
-                                                    <div key={i} className="flex gap-6 items-start group/item">
-                                                        <div className="w-8 h-8 rounded-xl bg-slate-50 text-slate-400 group-hover/item:bg-blue-50 group-hover/item:text-blue-600 flex items-center justify-center text-[10px] font-black shrink-0 mt-1 shadow-inner transition-colors">{i+1}</div>
-                                                        <p className="text-sm md:text-base text-slate-600 leading-relaxed font-bold transition-colors group-hover/item:text-slate-900">{item}</p>
+                                        <div key={idx} className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-200 shadow-sm transition-all hover:border-blue-200 hover:shadow-xl group text-left text-left text-left text-left text-left">
+                                            <h3 className="font-black text-blue-900 text-xs uppercase mb-8 pb-3 border-b border-slate-100 tracking-[0.3em] flex items-center justify-between text-left uppercase font-black text-left text-left text-left text-left text-left">{norma.titulo}</h3>
+                                            <div className="space-y-6 text-left text-left text-left text-left">
+                                                {normas[idx].items.map((item, i) => (
+                                                    <div key={i} className="flex gap-6 items-start group/item text-left text-left text-left text-left text-left text-left text-left">
+                                                        <div className="w-8 h-8 rounded-xl bg-slate-50 text-slate-400 group-hover/item:bg-blue-50 group-hover/item:text-blue-600 flex items-center justify-center text-[10px] font-black shrink-0 mt-1 shadow-inner transition-colors font-bold text-left text-left text-left text-left text-left">{i+1}</div>
+                                                        <p className="text-sm md:text-base text-gray-600 leading-relaxed font-bold transition-colors group-hover/item:text-slate-900 text-left font-bold text-left text-left text-left text-left text-left">{item}</p>
                                                     </div>
                                                 ))}
                                             </div>
                                         </div>
                                     ))}
                                 </div>
-                                <div className="p-10 bg-slate-900 rounded-[3rem] text-center text-white relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none scale-[3]"><Icons.Shield /></div>
-                                    <p className="text-xs font-black uppercase tracking-[0.4em] text-blue-400 mb-4">Garantía de Estabilidad</p>
-                                    <p className="text-slate-400 text-sm max-w-2xl mx-auto leading-relaxed font-medium">
-                                        Cualquier modificación debe ser gestionada bajo este flujo para asegurar la continuidad de los servicios digitales y la integridad de la información ministerial.
-                                    </p>
-                                </div>
                             </div>
                         )}
                     </main>
 
-                    <footer className="max-w-5xl mx-auto mt-20 px-8 text-center">
-                        <div className="w-full h-px bg-slate-200 mb-10"></div>
-                        <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-slate-400">
-                            Ministerio de Trabajo y Previsión Social | República de Guatemala
+                    <footer className="max-w-6xl mx-auto mt-20 px-8 text-center text-left text-left text-left text-left text-left">
+                        <div className="w-full h-px bg-slate-200 mb-10 text-left text-left text-left text-left text-left"></div>
+                        <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-slate-400 tracking-widest leading-relaxed uppercase text-center text-left font-black text-left text-left text-left text-left">
+                            Ministerio de Trabajo y Previsión Social | República de Guatemala<br/>
+                            Dirección de Sistemas de Información
                         </p>
                     </footer>
                 </div>
@@ -290,4 +412,3 @@
     </script>
 </body>
 </html>
-
