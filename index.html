@@ -73,18 +73,18 @@
                     desc: "El Ente Rector formaliza el requerimiento mediante el formato institucional oficial tras haber completado satisfactoriamente la Línea Base Técnica. Descargue el archivo editable (Word) según su necesidad operativa:",
                     tasks: [
                         { 
-                            label: "DISI-FO-001: Solicitud de nuevo sistema informático (Para plataformas inexistentes)", 
+                            label: "DISI-FO-001-Solicitud de nuevo sistema informático (Para plataformas inexistentes)", 
                             file: "https://mintrabajogt.sharepoint.com/:w:/s/direcciondesistemasdeinformacion/IQDDoyf33n6LTYkGhhsz-8C3AZLSEL5jU1_Pm7x9CJUiESw?e=g2CmWZ" 
                         },
                         { 
-                            label: "DISI-FO-002: Solicitud de actualización de sistema de información (Para mejoras en sistemas vigentes)", 
+                            label: "DISI-FO-002-Solicitud de actualización de sistema de información (Para mejoras en sistemas vigentes)", 
                             file: "https://mintrabajogt.sharepoint.com/:w:/s/direcciondesistemasdeinformacion/IQBmsWQgHmdKRrG3zfquyOVVAUlSaWwV8X60XZH8y-7bQJ0?e=RxF0hh" 
                         }
                     ]
                 },
                 {
                     id: "Análisis de Viabilidad Técnica",
-                    title: "DISI-FO-016: Dictamen Técnico de Viabilidad Integral",
+                    title: "DISI-FO-016-Dictamen Técnico de Viabilidad Integral",
                     actor: "Dirección de Sistemas de Información",
                     icon: <Icons.Search />,
                     color: "bg-emerald-600",
@@ -109,7 +109,7 @@
                             example: "Determinación de la disponibilidad de perfiles técnicos (analistas, desarrolladores, QA) y validación de que el proyecto se ajusta a las prioridades del Despacho Ministerial."
                         },
                         {
-                            label: "Emisión de Resolución Final en el DISI-FO-016: Dictamen Técnico de Viabilidad Integral",
+                            label: "Emisión de Resolución Final en el DISI-FO-016-Dictamen Técnico de Viabilidad Integral",
                             resp: "Director de Sistemas de Información",
                             desc: "Consolidación de todas las evaluaciones técnicas y estratégicas en un documento oficial único que autoriza o rechaza técnicamente la ejecución del proyecto.",
                             example: "Firma y validación del dictamen oficial que determina la factibilidad integral del requerimiento basado en criterios técnicos, humanos y estratégicos."
@@ -122,7 +122,7 @@
                     actor: "Dirección de Sistemas de Información",
                     icon: <Icons.Code />,
                     color: "bg-indigo-600",
-                    desc: "Implementación técnica de los requerimientos aprobados. Esta fase se ejecuta únicamente si el dictamen DISI-FO-016: Dictamen Técnico de Viabilidad Integral es positivo e incluye las siguientes etapas operativas:",
+                    desc: "Implementación técnica de los requerimientos aprobados. Esta fase se ejecuta únicamente si el dictamen DISI-FO-016-Dictamen Técnico de Viabilidad Integral es positivo e incluye las siguientes etapas operativas:",
                     tasks: [
                         { 
                             label: "Recopilación de Requerimientos", 
@@ -160,27 +160,73 @@
 
             const normas = [
                 {
-                    titulo: "1. SOBRE LA SOLICITUD",
-                    items: [
-                        "Toda solicitud debe contar con aval de autoridad superior y despacho ministerial antes de su remisión.",
-                        "Debe documentarse en el DISI-FO-001 o DISI-FO-002 según corresponda.",
-                        "REQUISITO OBLIGATORIO: Se deben adjuntar procedimientos formalmente aprobados (Línea Base)."
+                    procedimiento: "MTPS-DISI-002-Control de Cambios y Actualización de Sistemas Informáticos",
+                    secciones: [
+                        {
+                            titulo: "1. Sobre la solicitud",
+                            items: [
+                                "Toda solicitud de actualización debe contar con aval de jefe de unidad, director, viceministerio y ser aprobada por despacho ministerial.",
+                                "Justificación clara y objetivos operativos documentados únicamente en el DISI-FO-002-Solicitud de actualización de sistema de información.",
+                                "Debe ir acompañada de los procedimientos formalmente aprobados que sustenten los requerimientos (Norma 1.c)."
+                            ]
+                        },
+                        {
+                            titulo: "2. Sobre la priorización y planificación",
+                            items: [
+                                "Evaluación por DISI según viabilidad técnica, disponibilidad de recursos y objetivos institucionales.",
+                                "DISI se reserva el derecho de calendarizar según planificación operativa y prioridades del Despacho."
+                            ]
+                        },
+                        {
+                            titulo: "3. Sobre la documentación y seguimiento",
+                            items: [
+                                "Manual de usuario actualizado elaborado íntegramente por la unidad o dirección responsable.",
+                                "Designación obligatoria de un punto de contacto para seguimiento técnico.",
+                                "Gestión de usuarios es responsabilidad única y exclusiva del Ente Rector."
+                            ]
+                        },
+                        {
+                            titulo: "4. Sobre la capacitación y soporte",
+                            items: [
+                                "DISI ofrecerá capacitación básica sobre los cambios implementados a los usuarios designados.",
+                                "El Ente Rector es responsable de replicar la capacitación a la totalidad de sus usuarios finales."
+                            ]
+                        }
                     ]
                 },
                 {
-                    titulo: "2. PRIORIZACIÓN Y EVALUACIÓN TÉCNICA",
-                    items: [
-                        "Las solicitudes serán evaluadas mediante el DISI-FO-016: Dictamen Técnico de Viabilidad Integral conforme a disponibilidad de recursos.",
-                        "Se consideran criterios de viabilidad técnica, capacidad instalada y alineación institucional.",
-                        "La Dirección de Sistemas de Información calendariza según su planificación operativa."
-                    ]
-                },
-                {
-                    titulo: "3. RESPONSABILIDADES DEL ENTE RECTOR",
-                    items: [
-                        "Elaboración íntegra de manuales de usuario y guías operativas.",
-                        "Réplica de capacitaciones técnicas a la totalidad de su personal.",
-                        "Mantenimiento de la documentación de sus procesos de negocio actualizada."
+                    procedimiento: "MTPS-DISI-001-Solicitud de Nuevo Sistema Informático",
+                    secciones: [
+                        {
+                            titulo: "1. Sobre la solicitud",
+                            items: [
+                                "Aval del jefe de unidad, director, viceministerio y aprobación por el Despacho Ministerial.",
+                                "Necesidad y objetivos operativos documentados únicamente en el DISI-FO-001-Solicitud de nuevo sistema informático.",
+                                "Adjuntar procedimientos formalmente aprobados que sustenten los requerimientos funcionales."
+                            ]
+                        },
+                        {
+                            titulo: "2. Sobre la priorización y planificación",
+                            items: [
+                                "Evaluación conforme a viabilidad técnica, disponibilidad de recursos y alineación institucional.",
+                                "Calendarización sujeta a planificación de DISI si el DISI-FO-016-Dictamen Técnico de Viabilidad Integral es positivo."
+                            ]
+                        },
+                        {
+                            titulo: "3. Sobre la documentación y seguimiento",
+                            items: [
+                                "El proyecto debe contar con requerimientos, plan de pruebas y acta de aceptación.",
+                                "Manual de usuario elaborado por la unidad responsable del sistema.",
+                                "Gestión de usuarios y actualización de guías bajo responsabilidad exclusiva del Ente Rector."
+                            ]
+                        },
+                        {
+                            titulo: "4. Sobre la capacitación y soporte",
+                            items: [
+                                "DISI brindará capacitación básica inicial; el Ente Rector es responsable de replicar dicha capacitación.",
+                                "Cambios posteriores se gestionarán bajo el procedimiento MTPS-DISI-002-Control de Cambios y Actualización de Sistemas Informáticos."
+                            ]
+                        }
                     ]
                 }
             ];
@@ -194,10 +240,10 @@
                                 <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-none mb-4 tracking-tighter">Dirección de Sistemas de Información</h1>
                                 <div className="space-y-2 text-left">
                                     <p className="text-blue-300 text-[9px] md:text-[11px] font-black uppercase tracking-[0.1em] border-l-2 border-blue-500 pl-3 leading-tight text-left">
-                                        Procedimiento Asociado: <span className="text-white font-bold uppercase tracking-normal">MTPS-DISI-001 - SOLICITUD DE NUEVO SISTEMA INFORMÁTICO</span>
+                                        Procedimiento Asociado: <span className="text-white font-bold uppercase tracking-normal">MTPS-DISI-001-SOLICITUD DE NUEVO SISTEMA INFORMÁTICO</span>
                                     </p>
                                     <p className="text-blue-300 text-[9px] md:text-[11px] font-black uppercase tracking-[0.1em] border-l-2 border-blue-500 pl-3 leading-tight text-left">
-                                        Procedimiento Asociado: <span className="text-white font-bold uppercase tracking-normal">MTPS-DISI-002 - Control de Cambios y Actualización de Sistemas Informáticos</span>
+                                        Procedimiento Asociado: <span className="text-white font-bold uppercase tracking-normal">MTPS-DISI-002-Control de Cambios y Actualización de Sistemas Informáticos</span>
                                     </p>
                                 </div>
                             </div>
@@ -287,9 +333,9 @@
                                     <div className={`${steps[activeStep].color} p-10 text-white relative overflow-hidden`}>
                                         <div className="absolute top-0 right-0 p-6 opacity-10 scale-[2] pointer-events-none">{steps[activeStep].icon}</div>
                                         <div className="relative z-10 text-left text-white text-left text-white">
-                                            <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-80 mb-3 border-b border-white/20 w-fit pb-1 font-bold tracking-widest uppercase text-left text-white">Responsable: {steps[activeStep].actor}</p>
-                                            <h2 className="text-2xl md:text-4xl font-black tracking-tighter leading-none uppercase mb-4 text-left tracking-tight text-white uppercase text-left text-white">PASO 0{activeStep + 1}: {steps[activeStep].id}</h2>
-                                            <div className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest w-fit border border-white/10 shadow-sm text-white text-left uppercase text-white uppercase">Procedimiento Oficial</div>
+                                            <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-80 mb-3 border-b border-white/20 w-fit pb-1 font-bold tracking-widest uppercase text-left text-white text-left text-white">Responsable: {steps[activeStep].actor}</p>
+                                            <h2 className="text-2xl md:text-4xl font-black tracking-tighter leading-none uppercase mb-4 text-left tracking-tight text-white uppercase text-left text-white text-left text-white">PASO 0{activeStep + 1}: {steps[activeStep].id}</h2>
+                                            <div className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest w-fit border border-white/10 shadow-sm text-white text-left uppercase text-white text-left text-white uppercase">Procedimiento Oficial</div>
                                         </div>
                                     </div>
                                     <div className="p-8 md:p-14 text-left">
@@ -301,36 +347,36 @@
                                                     /* Desglose estructurado para Pasos 02 y 03 */
                                                     <div key={i} className="flex flex-col p-6 bg-white border border-slate-200 rounded-[2.5rem] hover:border-blue-300 transition-all shadow-sm text-left">
                                                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3 text-left">
-                                                            <div className="flex items-center gap-4 text-left text-slate-800 text-left">
-                                                                <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-black shadow-inner text-left">
+                                                            <div className="flex items-center gap-4 text-left text-slate-800 text-left text-left">
+                                                                <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-black shadow-inner text-left text-left">
                                                                     {i + 1}
                                                                 </div>
-                                                                <span className="text-sm font-black text-slate-800 uppercase tracking-tight text-left text-left">
+                                                                <span className="text-sm font-black text-slate-800 uppercase tracking-tight text-left text-left text-left">
                                                                     {typeof task === 'string' ? task : task.label}
                                                                 </span>
                                                             </div>
-                                                            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-xl border border-slate-100 shrink-0 shadow-sm text-left">
+                                                            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-xl border border-slate-100 shrink-0 shadow-sm text-left text-left">
                                                                 <Icons.User />
-                                                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 text-left">
-                                                                    Responsable: <span className="text-blue-700 font-black text-left">{typeof task === 'string' ? "Dirección Sistemas" : task.resp}</span>
+                                                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 text-left text-left">
+                                                                    Responsable: <span className="text-blue-700 font-black text-left text-left">{typeof task === 'string' ? "Dirección Sistemas" : task.resp}</span>
                                                                 </span>
                                                             </div>
                                                         </div>
                                                         
                                                         {typeof task === 'object' && task.desc && (
-                                                            <div className="space-y-4 border-t border-slate-100 pt-4 text-left text-left">
-                                                                <div className="flex items-start gap-3 text-left text-left">
-                                                                    <div className="mt-1 text-blue-500 shrink-0 text-left text-left text-left"><Icons.Info /></div>
-                                                                    <p className="text-sm text-slate-600 leading-relaxed font-medium text-left text-left">
-                                                                        <span className="font-black text-slate-800 uppercase text-[10px] tracking-widest block mb-1 text-left text-left">Objetivo de la Fase:</span>
+                                                            <div className="space-y-4 border-t border-slate-100 pt-4 text-left text-left text-left">
+                                                                <div className="flex items-start gap-3 text-left text-left text-left">
+                                                                    <div className="mt-1 text-blue-500 shrink-0 text-left text-left text-left text-left"><Icons.Info /></div>
+                                                                    <p className="text-sm text-slate-600 leading-relaxed font-medium text-left text-left text-left">
+                                                                        <span className="font-black text-slate-800 uppercase text-[10px] tracking-widest block mb-1 text-left text-left text-left">Objetivo de la Fase:</span>
                                                                         {task.desc}
                                                                     </p>
                                                                 </div>
                                                                 
                                                                 {task.example && (
-                                                                    <div className="bg-blue-50/40 p-4 rounded-2xl border border-blue-100/50 ml-7 text-left text-left">
-                                                                        <p className="text-sm text-blue-800 leading-relaxed italic text-left text-left">
-                                                                            <span className="font-black text-blue-900 uppercase text-[9px] tracking-widest block mb-1 not-italic flex items-center gap-1 text-left text-left">
+                                                                    <div className="bg-blue-50/40 p-4 rounded-2xl border border-blue-100/50 ml-7 text-left text-left text-left">
+                                                                        <p className="text-sm text-blue-800 leading-relaxed italic text-left text-left text-left">
+                                                                            <span className="font-black text-blue-900 uppercase text-[9px] tracking-widest block mb-1 not-italic flex items-center gap-1 text-left text-left text-left">
                                                                                 <Icons.CheckCircle /> {activeStep === 1 ? "Análisis de Factibilidad:" : "Descripción de la Fase:"}
                                                                             </span>
                                                                             "{task.example}"
@@ -342,16 +388,16 @@
                                                     </div>
                                                 ) : (
                                                     /* Renderizado estándar para Paso 01 */
-                                                    <div key={i} className="flex items-start gap-5 p-6 bg-slate-50 rounded-[2.5rem] border border-slate-100 transition-all hover:border-blue-300 hover:bg-white hover:shadow-lg group text-left text-slate-700 text-left text-left">
-                                                        <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-sm font-black text-slate-300 border border-slate-100 shrink-0 group-hover:text-blue-600 group-hover:border-blue-200 shadow-sm transition-all text-left font-black text-left">{i+1}</div>
-                                                        <div className="flex flex-col gap-3 w-full pt-2 text-left text-left text-left text-left text-left text-left">
-                                                            <span className="text-sm font-bold text-slate-700 leading-snug group-hover:text-slate-900 transition-colors text-left text-left font-black text-left text-left">
+                                                    <div key={i} className="flex items-start gap-5 p-6 bg-slate-50 rounded-[2.5rem] border border-slate-100 transition-all hover:border-blue-300 hover:bg-white hover:shadow-lg group text-left text-slate-700 text-left text-left text-left">
+                                                        <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-sm font-black text-slate-300 border border-slate-100 shrink-0 group-hover:text-blue-600 group-hover:border-blue-200 shadow-sm transition-all text-left font-black text-left text-left">{i+1}</div>
+                                                        <div className="flex flex-col gap-3 w-full pt-2 text-left text-left text-left text-left text-left text-left text-left text-left">
+                                                            <span className="text-sm font-bold text-slate-700 leading-snug group-hover:text-slate-900 transition-colors text-left text-left font-black text-left text-left text-left text-left">
                                                                 {typeof task === 'string' ? task : task.label}
                                                             </span>
                                                             {activeStep === 0 && typeof task !== 'string' && (
                                                                 <button 
                                                                     onClick={() => window.open(task.file, '_blank')}
-                                                                    className="flex items-center justify-center gap-2 bg-[#1a5fb4] hover:bg-blue-800 text-white px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all shadow-md active:scale-95 w-fit text-left text-left"
+                                                                    className="flex items-center justify-center gap-2 bg-[#1a5fb4] hover:bg-blue-800 text-white px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all shadow-md active:scale-95 w-fit text-left text-left text-left text-left"
                                                                 >
                                                                     <Icons.EditFile /> Descargar Editable (Word)
                                                                 </button>
@@ -364,41 +410,46 @@
                                     </div>
                                 </div>
 
-                                <div className="bg-amber-50 border-2 border-amber-200 rounded-[2.5rem] p-8 flex flex-col md:flex-row gap-6 shadow-md items-center text-left text-left text-left">
-                                    <div className="text-amber-500 shrink-0 scale-125 text-left text-left text-left"><Icons.Alert /></div>
-                                    <div className="text-amber-900 text-xs md:text-[13px] font-black leading-relaxed uppercase tracking-tight max-w-5xl text-left font-black text-left text-left">
-                                        <p>La <strong>Dirección de Sistemas de Información</strong> no procesará solicitudes (<strong>DISI-FO-001</strong> o <strong>DISI-FO-002</strong>) ni emitirá el <strong>DISI-FO-016: Dictamen Técnico de Viabilidad Integral</strong> si el <strong>Ente Rector</strong> no adjunta la documentación de la Línea Base Técnica requerida.</p>
+                                <div className="bg-amber-50 border-2 border-amber-200 rounded-[2.5rem] p-8 flex flex-col md:flex-row gap-6 shadow-md items-center text-left text-left text-left text-left">
+                                    <div className="text-amber-500 shrink-0 scale-125 text-left text-left text-left text-left"><Icons.Alert /></div>
+                                    <div className="text-amber-900 text-xs md:text-[13px] font-black leading-relaxed uppercase tracking-tight max-w-5xl text-left font-black text-left text-left text-left">
+                                        <p>La <strong>Dirección de Sistemas de Información</strong> no procesará solicitudes (<strong>DISI-FO-001-Solicitud de nuevo sistema informático</strong> o <strong>DISI-FO-002-Solicitud de actualización de sistema de información</strong>) ni emitirá el <strong>DISI-FO-016-Dictamen Técnico de Viabilidad Integral</strong> si el <strong>Ente Rector</strong> no adjunta la documentación de la Línea Base Técnica requerida.</p>
                                     </div>
                                 </div>
                             </div>
                         ) : (
-                            <div className="space-y-8 animate-in fade-in duration-500 text-left text-left text-left">
-                                <div className="flex items-center gap-4 px-4 text-left text-slate-800 font-black text-left text-left text-left text-left">
-                                    <div className="bg-blue-900 text-white p-3 rounded-2xl shadow-lg text-left text-left text-left text-left"><Icons.Shield /></div>
-                                    <h2 className="text-2xl font-black text-slate-800 uppercase tracking-tighter text-left uppercase font-black text-left text-left text-left">Normativa Técnica Consolidada</h2>
-                                </div>
-                                <div className="grid grid-cols-1 gap-6 text-left text-left text-left text-left">
-                                    {normas.map((norma, idx) => (
-                                        <div key={idx} className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-200 shadow-sm transition-all hover:border-blue-200 hover:shadow-xl group text-left text-left text-left text-left text-left">
-                                            <h3 className="font-black text-blue-900 text-xs uppercase mb-8 pb-3 border-b border-slate-100 tracking-[0.3em] flex items-center justify-between text-left uppercase font-black text-left text-left text-left text-left text-left">{norma.titulo}</h3>
-                                            <div className="space-y-6 text-left text-left text-left text-left">
-                                                {normas[idx].items.map((item, i) => (
-                                                    <div key={i} className="flex gap-6 items-start group/item text-left text-left text-left text-left text-left text-left text-left">
-                                                        <div className="w-8 h-8 rounded-xl bg-slate-50 text-slate-400 group-hover/item:bg-blue-50 group-hover/item:text-blue-600 flex items-center justify-center text-[10px] font-black shrink-0 mt-1 shadow-inner transition-colors font-bold text-left text-left text-left text-left text-left">{i+1}</div>
-                                                        <p className="text-sm md:text-base text-gray-600 leading-relaxed font-bold transition-colors group-hover/item:text-slate-900 text-left font-bold text-left text-left text-left text-left text-left">{item}</p>
-                                                    </div>
-                                                ))}
-                                            </div>
+                            <div className="space-y-12 animate-in fade-in duration-500">
+                                {normas.map((procedimiento, pIdx) => (
+                                    <div key={pIdx} className="space-y-6">
+                                        <div className="flex items-center gap-4 px-4 text-blue-900">
+                                            <div className="bg-blue-900 text-white p-3 rounded-2xl shadow-lg"><Icons.Shield /></div>
+                                            <h2 className="text-xl md:text-2xl font-black uppercase tracking-tighter">{procedimiento.procedimiento}</h2>
                                         </div>
-                                    ))}
-                                </div>
+                                        
+                                        <div className="grid grid-cols-1 gap-6">
+                                            {procedimiento.secciones.map((norma, idx) => (
+                                                <div key={idx} className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-200 shadow-sm transition-all hover:border-blue-200 hover:shadow-xl group text-left">
+                                                    <h3 className="font-black text-blue-900 text-xs uppercase mb-8 pb-3 border-b border-slate-100 tracking-[0.3em] flex items-center justify-between text-left uppercase font-black text-left">{norma.titulo}</h3>
+                                                    <div className="space-y-6 text-left">
+                                                        {norma.items.map((item, i) => (
+                                                            <div key={i} className="flex gap-6 items-start group/item text-left text-left">
+                                                                <div className="w-8 h-8 rounded-xl bg-slate-50 text-slate-400 group-hover/item:bg-blue-50 group-hover/item:text-blue-600 flex items-center justify-center text-[10px] font-black shrink-0 mt-1 shadow-inner transition-colors font-bold text-left text-left">{i+1}</div>
+                                                                <p className="text-sm md:text-base text-gray-600 leading-relaxed font-bold transition-colors group-hover/item:text-slate-900 text-left font-bold text-left text-left">{item}</p>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         )}
                     </main>
 
-                    <footer className="max-w-6xl mx-auto mt-20 px-8 text-center text-left text-left text-left text-left text-left">
-                        <div className="w-full h-px bg-slate-200 mb-10 text-left text-left text-left text-left text-left"></div>
-                        <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-slate-400 tracking-widest leading-relaxed uppercase text-center text-left font-black text-left text-left text-left text-left">
+                    <footer className="max-w-6xl mx-auto mt-20 px-8 text-center text-left text-left text-left text-left text-left text-left">
+                        <div className="w-full h-px bg-slate-200 mb-10 text-left text-left text-left text-left text-left text-left"></div>
+                        <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-slate-400 tracking-widest leading-relaxed uppercase text-center text-left font-black text-left text-left text-left text-left text-left text-left">
                             Ministerio de Trabajo y Previsión Social | República de Guatemala<br/>
                             Dirección de Sistemas de Información
                         </p>
